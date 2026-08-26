@@ -1,0 +1,19 @@
+{
+  "name": "authentication_piyush",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/index",
+    "build": "tsc -p .",
+    "dev": "tsc-watch --onSuccess \"node dist/index\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.0",
+  "devDependencies": {
+    "tsc-watch": "^7.2.1"
+  }
+}
