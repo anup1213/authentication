@@ -9,4 +9,5 @@ export const authRouter: Router = express.Router()
 
 
 authRouter
-    .post('/signup', authenticationController.handleSingup.bind(authenticationController))
+    .post('/sign-up', authenticationController.handleSingup.bind(authenticationController))
+    .post('/sign-in', authenticationController.handleSignin.bind(authenticationController))
