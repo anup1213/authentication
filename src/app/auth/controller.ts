@@ -4,6 +4,7 @@ import { signinPayloadModel, signupPayloadModel } from './models';
 import { db } from '../../db';
 import { usersTable } from '../../db/schema';
 import { eq } from 'drizzle-orm';
+import { createUserToken } from './utils/token';
 
 class AuthenticationController {
     public async handleSingup(req: Request, res: Response) {
@@ -51,7 +52,8 @@ class AuthenticationController {
         }
 
         // TODO: token banao
-        return res.json({message: 'Signin success', data: {token: 1}})
+        const token = createUserToken({id: userSelect.id})
+        return res.json({message: 'Signin success', data: {token}})
 
 
     }
