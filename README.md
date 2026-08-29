@@ -1,5 +1,7 @@
 # Authentication Service
 
+![Authentication flow](./auth_flow.png)
+
 A lightweight Express + TypeScript authentication service for user signup, signin, and authenticated profile retrieval.
 
 ## Overview

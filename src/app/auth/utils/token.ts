@@ -3,9 +3,9 @@ import JWT from 'jsonwebtoken'
 
 export interface UserTokenPayload {
     id: string,
-
 }
 
+// store secrets in .env file. [not safe to expose secrets]
 const JWT_SECRET = 'hfoivshdfvaoisdj'
 
 export function createUserToken(payload: UserTokenPayload) {
