@@ -5,6 +5,7 @@ import { db } from '../../db';
 import { usersTable } from '../../db/schema';
 import { eq } from 'drizzle-orm';
 import { createUserToken } from './utils/token';
+import type {UserTokenPayload} from './utils/token'
 
 class AuthenticationController {
     public async handleSingup(req: Request, res: Response) {
@@ -51,11 +52,23 @@ class AuthenticationController {
                 message: `email or password is incorrect`})
         }
 
-        // TODO: token banao
         const token = createUserToken({id: userSelect.id})
         return res.json({message: 'Signin success', data: {token}})
 
 
+    }
+
+    public async handleMe(req: Request, res: Response) {
+        // @ts-ignore
+        const { id } = req.user! as UserTokenPayload
+
+        const [userResult] = await db.select().from(usersTable).where(eq(usersTable.id, id))
+
+        return res.json({
+            firstName: userResult?.firstName,
+            lastName: userResult?.lastName,
+            email: userResult?.email
+        })
     }
 
 }
